@@ -90,12 +90,23 @@ TAVYYC______WGQGTLVTVSS
 
 Output:
 TAVYYCAAGTSIWGQGTLVTVSS
+
 ```
 ## Amino Acid Composition
 
 ![AA Frequency](images/aa_frequency.png)
 
 Analysis of 200 generated CDRH3 sequences revealed a strong enrichment of glycine (25.7%), followed by alanine (12.2%) and serine (11.7%). Aromatic residues such as tyrosine and tryptophan were also observed, while no cysteine residues were generated.
+
+---
+
+## CDRH3 Diversity Analysis
+
+![CDRH3 Diversity](images/cdrh3_diversity.png)
+
+Across all tested loop lengths, ESM3 generated highly diverse CDRH3 libraries with unique sequence rates ranging from 90% to 100%.
+
+The highest diversity was observed for 8-amino-acid loops, while all longer loop lengths maintained greater than 97% uniqueness. These results suggest that ESM3 explores a broad sequence space even when constrained within a fixed antibody framework.
 
 ---
 
