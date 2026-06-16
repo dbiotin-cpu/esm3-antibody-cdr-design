@@ -116,11 +116,22 @@ The highest diversity was observed for 8-amino-acid loops, while all longer loop
 README.md
 
 scripts/
-└── cdrh3_generation.py
+├── cdrh3_generation.py
+├── generate_cdrh3_library.py
+├── analyze_cdrh3_library.py
+├── analyze_cdrh3_diversity.py
+├── plot_aa_frequency.py
+└── plot_cdrh3_diversity.py
 
 results/
+├── esm3_cdrh3_library.csv
+├── aa_frequency.csv
+└── cdrh3_diversity_summary.csv
 
 images/
+├── aa_frequency.png
+└── cdrh3_diversity.png
+
 ```
 
 ---
