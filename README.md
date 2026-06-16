@@ -111,8 +111,6 @@ images/
 
 ## Key Observations
 
-## Key Observations
-
 A library of 200 CDRH3 sequences was generated using ESM3 across four loop lengths (6, 8, 10, and 12 amino acids).
 
 Analysis of the generated sequences revealed several notable trends:
