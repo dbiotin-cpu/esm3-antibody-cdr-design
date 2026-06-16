@@ -95,7 +95,8 @@ TAVYYCAAGTSIWGQGTLVTVSS
 
 ![AA Frequency](images/aa_frequency.png)
 
-Analysis of 200 generated CDRH3 sequences revealed a strong enrichment of glycine (25.7%), followed by alanine and serine.
+Analysis of 200 generated CDRH3 sequences revealed a strong enrichment of glycine (25.7%), followed by alanine (12.2%) and serine (11.7%). Aromatic residues such as tyrosine and tryptophan were also observed, while no cysteine residues were generated.
+
 ---
 
 ## Repository Structure
