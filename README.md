@@ -111,14 +111,19 @@ images/
 
 ## Key Observations
 
-Several generated CDRH3 sequences contained features commonly observed in natural antibody repertoires, including:
+## Key Observations
 
-* Aromatic residues (Y, W)
-* Glycine-rich motifs
-* Charged residues (R, D)
-* Variable loop lengths
+A library of 200 CDRH3 sequences was generated using ESM3 across four loop lengths (6, 8, 10, and 12 amino acids).
 
-These preliminary results suggest that ESM3 captures biologically relevant sequence patterns that may be useful for antibody engineering applications.
+Analysis of the generated sequences revealed several notable trends:
+
+* Glycine was the most abundant residue (25.7%), suggesting a strong preference for flexible loop conformations.
+* Aromatic residues (Y, W, and F) accounted for approximately 10% of all generated residues, consistent with their frequent involvement in antibody-antigen recognition.
+* Charged residues such as Arg (7.5%) and Asp (8.7%) were also enriched, indicating the potential for electrostatic interactions.
+* No cysteine residues were generated within the designed CDRH3 regions, reducing the risk of unintended disulfide bond formation.
+
+Overall, the generated sequences displayed several characteristics commonly observed in natural antibody repertoires, suggesting that ESM3 captures biologically relevant patterns within antibody sequence space.
+
 
 ---
 
