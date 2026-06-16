@@ -91,7 +91,11 @@ TAVYYC______WGQGTLVTVSS
 Output:
 TAVYYCAAGTSIWGQGTLVTVSS
 ```
+## Amino Acid Composition
 
+![AA Frequency](images/aa_frequency.png)
+
+Analysis of 200 generated CDRH3 sequences revealed a strong enrichment of glycine (25.7%), followed by alanine and serine.
 ---
 
 ## Repository Structure
