@@ -1,0 +1,5 @@
+h3_length,total_sequences,unique_sequences,duplicate_sequences,unique_rate_percent
+6,50,45,5,90.0
+8,50,50,0,100.0
+10,45,44,1,97.8
+12,49,48,1,98.0
