@@ -1,75 +1,48 @@
-# Evaluating ESM3 for Antibody CDRH3 Sequence Generation
+# ESM3 Antibody CDR Design
 
 ## Project Overview
 
-This project explores the ability of ESM3, a multimodal protein foundation model, to generate antibody CDRH3 sequences within a fixed antibody framework.
-
-Using masked sequence generation, I investigated how ESM3 completes missing CDRH3 regions of varying lengths and evaluated the diversity of generated sequences.
-
-This work was performed as part of my hands-on exploration of AI-driven protein engineering tools and their potential applications in antibody discovery.
+This project explores the use of ESM3, a protein foundation model, for antibody CDRH3 sequence generation and redesign. The goal is to evaluate whether ESM3 can generate biologically plausible CDRH3 variants and to analyze the resulting sequence diversity and amino acid composition.
 
 ---
 
 ## Motivation
 
-Antibody specificity is largely determined by the complementarity-determining regions (CDRs), particularly CDRH3, which often plays a dominant role in antigen recognition.
-
-Recent protein language models have demonstrated the ability to generate biologically meaningful protein sequences. This project aims to evaluate whether ESM3 can generate plausible CDRH3 sequences when provided with a fixed antibody framework.
-
-As a protein engineer with 10 years of experience in antibody discovery and engineering, I was interested in understanding how foundation models might contribute to future antibody design workflows.
+Antibody CDRH3 loops play a central role in antigen recognition and often contribute significantly to binding specificity and affinity. Recent protein language models provide an opportunity to explore antibody sequence space computationally. This project investigates whether ESM3 can generate diverse CDRH3 candidates while maintaining antibody-like sequence characteristics.
 
 ---
 
 ## Workflow
 
 ```text
-Antibody Framework
-
-TAVYYC ______ WGQGTLVTVSS
-
-↓
-
-Mask CDRH3 Region
-
-↓
-
-ESM3 Sequence Generation
-
-↓
-
+Mask CDRH3
+      ↓
+Generate Sequences with ESM3
+      ↓
 Extract Generated CDRH3
-
-↓
-
+      ↓
 Sequence Analysis
+      ↓
+Therapeutic Antibody Redesign
 ```
 
 ---
 
 ## Experimental Design
 
-### Antibody Framework
-
-Prefix:
+### Input
 
 ```text
-TAVYYC
+TAVYYC______WGQGTLVTVSS
 ```
 
-Suffix:
+### Output
 
 ```text
-WGQGTLVTVSS
+TAVYYCAAGTSIWGQGTLVTVSS
 ```
 
-### Tested CDRH3 Lengths
-
-* 6 amino acids
-* 8 amino acids
-* 10 amino acids
-* 12 amino acids
-
-For each experiment, the CDRH3 region was masked and generated using ESM3.
+CDRH3 lengths of 6, 8, 10, and 12 amino acids were evaluated. Fifty sequences were generated for each length, resulting in a library of 200 CDRH3 variants.
 
 ---
 
@@ -82,21 +55,15 @@ For each experiment, the CDRH3 region was masked and generated using ESM3.
 | 10          | AARSGSGSWV      |
 | 12          | ARRDGGGGGFDV    |
 
-Example generated sequence:
+---
 
-```text
-Input:
-TAVYYC______WGQGTLVTVSS
-
-Output:
-TAVYYCAAGTSIWGQGTLVTVSS
-
-```
 ## Amino Acid Composition
 
 ![AA Frequency](images/aa_frequency.png)
 
-Analysis of 200 generated CDRH3 sequences revealed a strong enrichment of glycine (25.7%), followed by alanine (12.2%) and serine (11.7%). Aromatic residues such as tyrosine and tryptophan were also observed, while no cysteine residues were generated.
+Analysis of 200 generated CDRH3 sequences revealed a strong enrichment of glycine (25.7%), followed by alanine (12.2%) and serine (11.7%).
+
+Aromatic residues such as tyrosine and tryptophan were also observed, while no cysteine residues were generated within the designed regions.
 
 ---
 
@@ -110,7 +77,7 @@ The highest diversity was observed for 8-amino-acid loops, while all longer loop
 
 ---
 
-## Antibody Scaffold-Based CDRH3 Redesign
+## Therapeutic Antibody CDRH3 Redesign
 
 To explore a more biologically relevant application, I extended the workflow from antigen-free CDRH3 generation to scaffold-constrained antibody redesign.
 
@@ -143,6 +110,25 @@ Several notable sequence patterns emerged from the generated variants:
 
 This experiment demonstrates how a protein foundation model can be applied to therapeutic antibody scaffolds to generate diverse CDRH3 candidates. Antigen-specific binding cannot be inferred directly from sequence generation and would require downstream structural modeling and experimental validation.
 
+---
+
+## Key Observations
+
+* ESM3 successfully generated diverse CDRH3 sequences across multiple loop lengths.
+* Generated libraries exhibited high diversity, with unique sequence rates ranging from 90% to 100%.
+* Glycine-rich and tyrosine-rich motifs were frequently observed, consistent with characteristics of natural antibody repertoires.
+* No cysteine residues were generated within the designed CDRH3 regions, reducing the risk of unintended disulfide bond formation.
+* ESM3 successfully generated alternative CDRH3 candidates within the framework of a therapeutic anti-PD-L1 antibody.
+
+---
+
+## Future Work
+
+* Structural filtering of ESM3-generated CDRH3 variants
+* Antibody-antigen complex prediction using Boltz-1
+* Interface scoring and ranking of redesigned antibodies
+* Developability assessment (aggregation, stability, and liability prediction)
+* Expansion from scaffold-constrained redesign to antigen-aware antibody engineering
 
 ---
 
@@ -157,49 +143,22 @@ scripts/
 ├── analyze_cdrh3_library.py
 ├── analyze_cdrh3_diversity.py
 ├── plot_aa_frequency.py
-└── plot_cdrh3_diversity.py
+├── plot_cdrh3_diversity.py
+└── generate_atezolizumab_cdrh3_variants.py
 
 results/
 ├── esm3_cdrh3_library.csv
 ├── aa_frequency.csv
-└── cdrh3_diversity_summary.csv
+├── cdrh3_diversity_summary.csv
+└── atezolizumab_cdrh3_variants.csv
 
 images/
 ├── aa_frequency.png
 └── cdrh3_diversity.png
-
 ```
-
----
-
-## Key Observations
-
-A library of 200 CDRH3 sequences was generated using ESM3 across four loop lengths (6, 8, 10, and 12 amino acids).
-
-Analysis of the generated sequences revealed several notable trends:
-
-* Glycine was the most abundant residue (25.7%), suggesting a strong preference for flexible loop conformations.
-* Aromatic residues (Y, W, and F) accounted for approximately 10% of all generated residues, consistent with their frequent involvement in antibody-antigen recognition.
-* Charged residues such as Arg (7.5%) and Asp (8.7%) were also enriched, indicating the potential for electrostatic interactions.
-* No cysteine residues were generated within the designed CDRH3 regions, reducing the risk of unintended disulfide bond formation.
-
-Overall, the generated sequences displayed several characteristics commonly observed in natural antibody repertoires, suggesting that ESM3 captures biologically relevant patterns within antibody sequence space.
-
-
----
-
-## Future Work
-
-- Structural filtering of ESM3-generated CDRH3 variants
-- Antibody-antigen complex prediction using Boltz-1 or AlphaFold-based workflows
-- Interface scoring and ranking of redesigned antibodies
-- Developability assessment (aggregation, stability, and liability prediction)
-- Expansion from scaffold-constrained redesign to antigen-aware antibody engineering
 
 ---
 
 ## Author
 
-Protein engineer with 10 years of industry experience in antibody discovery, protein engineering, and biologics development.
-
-This project was conducted as part of a broader effort to evaluate modern AI-based protein design technologies for therapeutic antibody engineering.
+Protein engineer with experience in antibody discovery, protein engineering, and AI-guided biologics development.
