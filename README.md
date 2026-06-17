@@ -110,6 +110,42 @@ The highest diversity was observed for 8-amino-acid loops, while all longer loop
 
 ---
 
+## Antibody Scaffold-Based CDRH3 Redesign
+
+To explore a more biologically relevant application, I extended the workflow from antigen-free CDRH3 generation to scaffold-constrained antibody redesign.
+
+The heavy-chain framework of atezolizumab, a clinically approved anti-PD-L1 antibody, was used as a fixed scaffold. The native CDRH3 sequence:
+
+```text
+RHWPGGFDY
+```
+
+was masked and regenerated using ESM3 while preserving the surrounding antibody framework.
+
+### Example Generated Variants
+
+| Original CDRH3 | ESM3-Generated CDRH3 |
+| -------------- | -------------------- |
+| RHWPGGFDY      | GDGYGYFDY            |
+| RHWPGGFDY      | GGYYYSMDY            |
+| RHWPGGFDY      | GGYGFALDY            |
+| RHWPGGFDY      | GGYYYGFDY            |
+| RHWPGGFDY      | DDYYYGMDY            |
+
+### Observations
+
+Several notable sequence patterns emerged from the generated variants:
+
+* Glycine (G) and tyrosine (Y) were strongly enriched across the redesigned CDRH3 sequences.
+* Most generated variants preserved the original loop length of 9 amino acids.
+* Multiple candidates retained the C-terminal `DY` motif, suggesting that ESM3 recognized local sequence context within the antibody framework.
+* The original `RHWP` motif was not preserved, indicating that ESM3 explored alternative sequence solutions while maintaining overall antibody-like characteristics.
+
+This experiment demonstrates how a protein foundation model can be applied to therapeutic antibody scaffolds to generate diverse CDRH3 candidates. Antigen-specific binding cannot be inferred directly from sequence generation and would require downstream structural modeling and experimental validation.
+
+
+---
+
 ## Repository Structure
 
 ```text
@@ -154,11 +190,11 @@ Overall, the generated sequences displayed several characteristics commonly obse
 
 ## Future Work
 
-* Generate larger CDRH3 libraries (100+ sequences per length)
-* Analyze amino acid composition
-* Compare generated sequences with natural antibody repertoires
-* Evaluate developability-related properties
-* Integrate ESM3-generated CDRs into downstream structure prediction workflows
+- Structural filtering of ESM3-generated CDRH3 variants
+- Antibody-antigen complex prediction using Boltz-1 or AlphaFold-based workflows
+- Interface scoring and ranking of redesigned antibodies
+- Developability assessment (aggregation, stability, and liability prediction)
+- Expansion from scaffold-constrained redesign to antigen-aware antibody engineering
 
 ---
 
